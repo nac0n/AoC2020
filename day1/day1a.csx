@@ -38,5 +38,5 @@ catch(Exception e) {
     Console.WriteLine("Exception: " + e.Message);
 }
 finally {
-    Console.WriteLine("Finished reading blocks");
+    Console.WriteLine("Finished");
 }
