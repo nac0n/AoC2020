@@ -6,11 +6,8 @@ private int[] FindThreeNumbers(List<int> lines) {
     int[] temp = new int[3];
     for (int i = 0; i < lines.Count; i++) {
         for (int x = (i + 1); x < lines.Count; x++) {
-            
             for (int y = (i + 2); y < lines.Count; y++) {
-            
                 if(lines[i] + lines[x] + lines[y] == 2020) {
-                    Console.WriteLine(lines[i].ToString() + " " + lines[x].ToString() + " " + lines[y].ToString());
                     temp[0] = lines[i];
                     temp[1] = lines[x];
                     temp[2] = lines[y];
@@ -30,7 +27,6 @@ try {
     line = sr.ReadLine();
 
     while(line != null) {
-        // Console.WriteLine(line);
         lines.Add(Int32.Parse(line));
         line = sr.ReadLine();
     }
@@ -45,5 +41,5 @@ catch(Exception e) {
     Console.WriteLine("Exception: " + e.Message);
 }
 finally {
-    Console.WriteLine("Finished reading blocks");
+    Console.WriteLine("Finished");
 }
