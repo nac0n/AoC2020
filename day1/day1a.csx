@@ -27,7 +27,7 @@ try {
         lines.Add(Int32.Parse(line));
         line = sr.ReadLine();
     }
-     //close the file
+    
     int[] twoNumbers = FindTwoNumbers(lines);
     int twoNumbersSum = (twoNumbers[0] * twoNumbers[1]);
     Console.WriteLine(twoNumbersSum.ToString());
