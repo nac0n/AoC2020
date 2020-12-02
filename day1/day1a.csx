@@ -24,7 +24,6 @@ try {
     line = sr.ReadLine();
 
     while(line != null) {
-        // Console.WriteLine(line);
         lines.Add(Int32.Parse(line));
         line = sr.ReadLine();
     }
