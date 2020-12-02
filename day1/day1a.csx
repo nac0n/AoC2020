@@ -8,7 +8,6 @@ private int[] FindTwoNumbers(List<int> lines) {
         for (int x = (i + 1); x < lines.Count; x++) {
             
             if(lines[i]+ lines[x] == 2020) {
-                Console.WriteLine(lines[i].ToString() + " " + lines[x].ToString());
                 temp[0] = lines[i];
                 temp[1] = lines[x];
                 return temp;
