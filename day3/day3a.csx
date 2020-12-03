@@ -6,17 +6,18 @@ List<string> lines = new System.Collections.Generic.List<string>();
 
 int answer = 0;
 
-private Boolean isValidPassword(int min, int max, string letter, string password) {
-
-    int count = password.Split(char.Parse(letter)).Length-1;
-    if(count >= min && count <= max) {
-        return true;
+private int GetNewHorizontalPos(int prevHorizontalLinePos, string line ) {
+    if((prevHorizontalLinePos += 3) < line.Count()) {
+        return prevHorizontalLinePos;
     }
-    return false;
+    else {
+        return (prevHorizontalLinePos - line.Count());
+    }
 }
+
 try {
 
-    StreamReader sr = new StreamReader("./day2.txt");
+    StreamReader sr = new StreamReader("./day3.txt");
     line = sr.ReadLine();
 
     while(line != null) {
@@ -25,24 +26,19 @@ try {
     }
     sr.Close();
 
-    foreach(String line in lines) {
-   
-        int index1 = line.IndexOf("-");
-        int index2 = line.IndexOf(":");
+    int prevHorizontalLinePos = 0;
+    int newHorizontalLinePos = 0;
 
-        int min = int.Parse(line.Substring(0, index1));
-        int max = int.Parse(line.Substring(index1 + 1, ((line.IndexOf(" ")) - (index1 + 1)) ) );
-        
-        String letter = line.Substring(index2 - 1, 1);
-        String password = line.Substring(index2 + 1);
+    for(int lineIndex = 1; lineIndex < lines.Count(); lineIndex ++) {
+        newHorizontalLinePos = GetNewHorizontalPos(prevHorizontalLinePos, lines[lineIndex]);
+        prevHorizontalLinePos = newHorizontalLinePos;
 
-        if(isValidPassword(min, max, letter, password)) {
+        if(lines[lineIndex][newHorizontalLinePos].CompareTo('#') == 0) {
             answer++;
         }
-
     }
 
-    Console.WriteLine(answer);
+    Console.WriteLine("Answer: " + answer.ToString());
 
 }
 
