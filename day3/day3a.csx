@@ -7,11 +7,11 @@ List<string> lines = new System.Collections.Generic.List<string>();
 int answer = 0;
 
 private int GetNewHorizontalPos(int prevHorizontalLinePos, string line ) {
-    if((prevHorizontalLinePos += 3) < line.Count()) {
-        return prevHorizontalLinePos;
+    if((prevHorizontalLinePos + 3) < line.Count()) {
+        return prevHorizontalLinePos + 3;
     }
     else {
-        return (prevHorizontalLinePos - line.Count());
+        return ((prevHorizontalLinePos + 3) - line.Count());
     }
 }
 
