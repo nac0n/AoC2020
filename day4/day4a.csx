@@ -8,16 +8,6 @@ int validPassports = 0;
 List<string> validFields = new List<string>();
 string[] fieldArray = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"};
 
-private void FillValidFieldsList() {
-    foreach(string field in fieldArray) {
-        validFields.Add(field);
-    }
-}
-private void ResetValidFieldsList() {
-    foreach(string field in fieldArray) {
-        validFields.RemoveRange(0, validFields.Count);
-    }
-}
 private Dictionary<string, string> GetPassportKeyValues(string passportStr) {
     Dictionary<string, string> passPortDict = new Dictionary<string, string>();
 
@@ -34,18 +24,13 @@ private Boolean isValidPassport(string passportStr) {
 
     // get string as dict
     Dictionary<string, string> passportDict = GetPassportKeyValues(passportStr);
-    FillValidFieldsList();
 
     // loop fields and validate the key, if not it's false.
     foreach(string field in fieldArray) {
         if(!passportDict.ContainsKey(field) && field != "cid") {
-            Console.WriteLine("Not Valid passportStr: " + passportStr);
-            Console.WriteLine("Not Valid field: " + field);
             return false;
         }
     }
-
-    ResetValidFieldsList();
     return true;
 }
 
@@ -57,9 +42,7 @@ try {
 
     while(line != null) {
         if(line.Length == 0) {
-            // passports.Add(savedLine.Trim());
             if(isValidPassport(savedLine.Trim())) {
-                // Console.WriteLine("ValidPass: " + savedLine.Trim());
                 validPassports++;
             }
             savedLine = "";
