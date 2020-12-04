@@ -35,24 +35,18 @@ private Boolean isValidPassport(string passportStr) {
 }
 
 try {
+
     StreamReader sr = new StreamReader("./day4.txt");
-    line = sr.ReadLine();
 
-    string savedLine = "";
+    var lines = sr.ReadToEnd().Split("\n\n").Select(l => l.Trim());
+    
+    foreach(var line in lines) {
+            string cleanedLine = line.Replace("\n", " ").Replace("\r", " ");
+            if(isValidPassport(cleanedLine.Trim())) {
 
-    while(line != null) {
-        if(line.Length == 0) {
-            if(isValidPassport(savedLine.Trim())) {
-                validPassports++;
-            }
-            savedLine = "";
+            validPassports++;
         }
-        else {
-            savedLine += line + " ";
-        }
-        line = sr.ReadLine();
     }
-    sr.Close();
 
     Console.WriteLine("Answer: " + validPassports.ToString());
 
