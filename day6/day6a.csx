@@ -7,7 +7,7 @@ double highestSeatID = 0;
 private const double startRowNumber = 127;
 private const double startColNumber = 7;
 
-int qCount;
+int qCount = 0;
 
 try {
 
@@ -16,13 +16,12 @@ try {
     var groups = sr.ReadToEnd().Split("\n\n").Select(l => l.Trim());
     
     foreach(var group in groups) {
-        qCount = 0;
         string temp = group.Replace("\n", "");
         string result = new string(temp.Distinct().ToArray());
         qCount += result.Length;
     }
 
-    // Console.WriteLine("Answer: " + highestSeatID.ToString());
+    Console.WriteLine(qCount);
 
 }
 
